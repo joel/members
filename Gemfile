@@ -42,17 +42,31 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :test do
+  # gem 'mock_redis'
+  # gem 'resque_spec'
+  # gem 'email_spec'
+  # gem 'vcr'
+  # gem 'steak'
+  gem 'rspec-rails'
+  # gem 'webmock'
+  # gem 'email_spec'
+  # gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  # gem 'timecop'
+  # gem 'rspec-http', '~> 0.9'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+group :test, :darwin do
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'guard-bundler'
+  
+  gem 'rb-fsevent'
+  gem 'growl'
+end
