@@ -5,8 +5,10 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'mongoid', '~> 3.0.2'
+
 platform :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
+  # gem 'activerecord-jdbcsqlite3-adapter'
   gem 'jruby-openssl'
   
   group :assets do
@@ -19,7 +21,7 @@ platform :jruby do
 end
 
 platform :ruby do
-  gem 'sqlite3'
+  # gem 'sqlite3'
 
   group :assets do
     gem 'therubyracer'
@@ -49,6 +51,7 @@ group :test do
   # gem 'vcr'
   # gem 'steak'
   gem 'rspec-rails'
+  gem 'mongoid-rspec'
   # gem 'webmock'
   # gem 'email_spec'
   # gem 'capybara'
