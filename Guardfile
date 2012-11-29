@@ -7,6 +7,14 @@ guard 'bundler' do
   # watch(/^.+\.gemspec/)
 end
 
+guard 'rspec', version: 2,
+  cli: "--require support/formatters/txmt_formatter --color --format TxmtFormatter --fail-fast --drb", # pass arbitrary RSpec CLI arguments
+  bundler: true,        # don't use "bundle exec" to run the RSpec command, default: true
+  notification: true,   # don't display Growl (or Libnotify) notification after the specs are done running, default: true
+  all_after_pass: true, # don't run all specs after changed specs pass, default: true
+  all_on_start: true,   # don't run all the specs at startup, default: true
+  keep_failed: false do
+    
 guard 'rspec' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
@@ -29,7 +37,7 @@ guard 'rspec' do
 end
 
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', rspec_env: { 'RAILS_ENV': 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -37,6 +45,4 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
-  watch('test/test_helper.rb') { :test_unit }
-  watch(%r{features/support/}) { :cucumber }
 end
