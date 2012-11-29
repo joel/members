@@ -6,6 +6,7 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mongoid', '~> 3.0.2'
+gem 'devise'
 
 platform :jruby do
   # gem 'activerecord-jdbcsqlite3-adapter'
