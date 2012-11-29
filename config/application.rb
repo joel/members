@@ -67,7 +67,7 @@ module Members
     
     config.app_generators do |g|    
       g.stylesheets false    
-      g.orm :datamapper
+      g.orm :mongoid
       g.view_specs false
       g.helper_specs false
       g.template_engine :erb
