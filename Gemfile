@@ -1,14 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'
+platform :jruby do
+  ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'
+end
 
-# platform :jruby do
-#   ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'
-# end
-# 
-# platform :ruby do
-#   ruby '1.9.3'
-# end
+platform :ruby do
+  ruby '1.9.3'
+end
 
 gem 'rails', '3.2.9'
 
