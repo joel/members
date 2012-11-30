@@ -217,6 +217,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise

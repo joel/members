@@ -28,6 +28,7 @@ platform :jruby do
   
   group :production do
     gem 'puma'
+    gem 'bundler'
   end
 end
 
