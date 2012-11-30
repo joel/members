@@ -1,0 +1,6 @@
+production:
+  sessions:
+    default:
+      database: members_production
+      hosts:
+        - localhost:27017

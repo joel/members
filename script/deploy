@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# encoding: utf-8
+
+class Deploy
+
+  def initialize platform
+    git add .
+    git stash save 'deployment'
+    git fetch origin
+    git checkout master
+    git pull origin master
+  
+    __send__ platform
+
+    # Compile assets
+    cp config/mongoid.assets.yml config/mongoid.yml
+    RAILS_ENV=production bundle exec rake assets:precompile
+  
+    git commit public/assets/* -m 'Update Assets'
+    git checkout config/mongoid.yml # or cp config/mongoid.default.yml config/mongoid.yml
+  
+    git push heroku master:master -f
+  end
+
+  def jruby
+    system './script/switch jruby'
+    system 'cp Procfile.prod.jruby Procfile'
+    system "git commit -m 'Switch to JRuby'"
+  end
+  
+  def ruby
+    system './script/switch ruby'
+    system 'cp Procfile.prod.ruby Procfile'
+    system "git commit -m 'Switch to Ruby'"
+  end
+  
+end
+
+if __FILE__ == $0
+  puts 'USAGE:'
+  puts 'deploy :platform (ruby|jruby)'
+  ARGV.each { |a| puts "Argument: #{a}" }; sleep 1
+  Deploy.new(ARGV[0]) if ARGV.length > 0
+end
