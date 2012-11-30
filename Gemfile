@@ -65,12 +65,9 @@ end
 group :test, :darwin do
   gem 'rb-fsevent'
   gem 'growl'
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork'
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'guard-bundler'
-  
-  gem 'rb-fsevent'
-  gem 'growl'
 end
