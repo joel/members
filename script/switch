@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+# encoding: utf-8
+
+class Switch
+
+  def initialize platform
+    __send__ platform
+  end
+
+  def jruby
+    `sed "s/ruby '1.9.3'/ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'/g" Gemfile > Gemfile.tmp`
+    system 'mv Gemfile.tmp Gemfile'
+    system 'rvm rvmrc load .rvmrc.jruby' 
+    `cat .rvmrc.jruby`  
+    system 'bundle'
+    system 'cp Procfile.dev.jruby Procfile'
+    puts 'You\'ve switched to jruby'
+  end
+  
+  def ruby
+    `sed "s/ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'/ruby '1.9.3'/g" Gemfile > Gemfile.tmp`
+    system 'mv Gemfile.tmp Gemfile'
+    system 'rvm rvmrc load .rvmrc.ruby'
+    `cat .rvmrc.ruby` 
+    system 'bundle'
+    system 'cp Procfile.dev.ruby Procfile'
+  end
+  
+end
+
+if __FILE__ == $0
+  puts 'USAGE:'
+  puts 'switch :platform (ruby|jruby)'
+  ARGV.each { |a| puts "Argument: #{a}" }; sleep 1
+  Switch.new(ARGV[0]) if ARGV.length > 0
+end
