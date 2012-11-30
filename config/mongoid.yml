@@ -1,3 +1,15 @@
+production:
+  options:
+    raise_not_found_error: true
+  sessions:
+    default:
+      database: members_production
+      hosts:
+        - <%= ENV['MONGOHQ_URL'] %>
+      options:
+        consistency: :eventual
+        max_retries: 30
+        retry_interval: 1
 development:
   # Configure available database sessions. (required)
   sessions:
