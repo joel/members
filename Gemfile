@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
-platform :jruby do
-  ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'
-end
+ruby '1.9.3'
 
-platform :ruby do
-  ruby '1.9.3'
-end
+# platform :jruby do
+#   ruby '1.9.3', engine: 'jruby', engine_version: '1.7.0'
+# end
+# 
+# platform :ruby do
+#   ruby '1.9.3'
+# end
 
 gem 'rails', '3.2.9'
 
@@ -16,18 +18,18 @@ gem 'rails', '3.2.9'
 gem 'mongoid'
 gem 'devise'
 
-platform :jruby do
-  # gem 'activerecord-jdbcsqlite3-adapter'
-  gem 'jruby-openssl'
-  
-  group :assets do
-    gem 'therubyrhino'
-  end
-  
-  group :production do
-    gem 'puma'
-  end
-end
+# platform :jruby do
+#   # gem 'activerecord-jdbcsqlite3-adapter'
+#   gem 'jruby-openssl'
+#   
+#   group :assets do
+#     gem 'therubyrhino'
+#   end
+#   
+#   group :production do
+#     gem 'puma'
+#   end
+# end
 
 platform :ruby do
   # gem 'sqlite3'
