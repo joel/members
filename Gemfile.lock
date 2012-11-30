@@ -234,6 +234,7 @@ DEPENDENCIES
   mongoid-rspec
   puma
   rails (= 3.2.9)
+  rake
   rb-fsevent
   rspec-rails
   sass-rails (~> 3.2.3)

@@ -29,6 +29,7 @@ platform :jruby do
   group :production do
     gem 'puma'
     gem 'bundler'
+    gem 'rake'
   end
 end
 
